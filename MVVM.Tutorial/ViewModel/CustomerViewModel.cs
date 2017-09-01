@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using MVVM.Tutorial.Command;
 using MVVM.Tutorial.Model;
+using MVVM.Tutorial.View;
 
 namespace MVVM.Tutorial.ViewModel
 {
     public class CustomerViewModel
     {
+        private CustomerInfoViewModel _childViewModel;
+
         public Customer Customer { get; }
         public ICommand UpdateCommand { get; }
 
@@ -18,11 +21,14 @@ namespace MVVM.Tutorial.ViewModel
         {
             Customer = customer;
             UpdateCommand = new CustomerUpdateCommand(this);
+            _childViewModel = new CustomerInfoViewModel();
         }
 
         public void SaveChanges()
         {
-            Console.WriteLine($@"{Customer.Name} was saved.");
+            var customerInfoView = new CustomerInfoView {DataContext = _childViewModel};
+            _childViewModel.Info = $"{Customer.Name} was updated in the datebase.";
+            customerInfoView.ShowDialog();
         }
     }
 }
