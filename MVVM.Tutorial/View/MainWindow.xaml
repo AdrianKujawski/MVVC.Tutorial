@@ -9,7 +9,7 @@
     <Grid Margin="10">
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
             <TextBlock>Your name:</TextBlock>
-            <TextBox Text="{Binding Customer.Name, UpdateSourceTrigger=PropertyChanged}" Width="150"></TextBox>
+            <TextBox Text="{Binding Customer.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="150"></TextBox>
             <Button Command="{Binding UpdateCommand}">Update</Button>
         </StackPanel>
     </Grid>

@@ -13,7 +13,6 @@ namespace MVVM.Tutorial.ViewModel
     {
         public Customer Customer { get; }
         public ICommand UpdateCommand { get; }
-        public bool CanUpdate => !string.IsNullOrEmpty(Customer.Name);
 
         public CustomerViewModel(Customer customer)
         {

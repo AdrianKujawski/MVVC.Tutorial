@@ -16,7 +16,7 @@ namespace MVVM.Tutorial.Command
 
         public bool CanExecute(object parameter)
         {
-            return _viewModel.CanUpdate;
+            return string.IsNullOrEmpty(_viewModel.Customer.Error);
         }
 
         public void Execute(object parameter)
